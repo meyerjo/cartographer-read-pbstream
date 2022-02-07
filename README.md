@@ -30,6 +30,6 @@ Process finished with exit code 0
 
 ## Plot trajectory
 
-``python main.py trajectory --inputfile=<*.pbstream file>`` plots the trajectory as open3d
+``python main.py trajectory --inputfile=<*.pbstream file>`` plots the trajectory using open3d
 
 ![Resulting image](imgs/screenshot.png)
