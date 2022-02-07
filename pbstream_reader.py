@@ -6,7 +6,7 @@ from collections import defaultdict
 from pathlib import Path
 from typing import Union
 
-from test2.mapping.proto import serialization_pb2
+from cartographer.mapping.proto import serialization_pb2
 
 
 class PBstream_Reader:

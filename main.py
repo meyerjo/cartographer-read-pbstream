@@ -1,11 +1,7 @@
 import argparse
-import copy
 from collections import defaultdict
 
-import numpy as np
-
 from pbstream_reader import PBstream_Reader
-
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
