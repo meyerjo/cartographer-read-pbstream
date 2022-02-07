@@ -31,8 +31,7 @@ class PBstream_Reader:
             header = pb.serialization_header
             for msg in pb:
                 fields = msg.ListFields()
-                if len(fields) == 0:
-                    continue
+                if len(fields) == 0: continue
                 for (field_descriptor, messsage) in fields:
                     loaded_data[field_descriptor.name] += 1
         print(f'Info about: {file_name}')

@@ -2,14 +2,16 @@ import argparse
 import copy
 from collections import defaultdict
 
-from pbstream_reader import PBstream_Reader
+from pbstream.reader import PBstream_Reader
 
 import open3d as o3d
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument(
-        'action', choices=['info', 'trajectory'], help='action "info" prints some information about the map, "trajectory" plots the trajectory  ')
+        'action', choices=['info', 'trajectory'],
+        help='action "info" prints some information about the map, "trajectory" plots the trajectory '
+    )
     parser.add_argument('--inputfile', type=str)
     ARGS = parser.parse_args()
 
