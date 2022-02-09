@@ -1,6 +1,7 @@
 [build-system]
 requires = [
     "setuptools>=42",
-    "open3d==0.14.1"
+    "open3d==0.14.1",
+    "protobuf"
 ]
 build-backend = "setuptools.build_meta"
