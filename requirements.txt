@@ -1,2 +1,2 @@
-open3d==0.14.1
-protobuf
+open3d
+protobuf==3.19

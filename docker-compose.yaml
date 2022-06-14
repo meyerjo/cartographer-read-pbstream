@@ -1,0 +1,37 @@
+version: '3.8'
+
+services:
+  pbstream_reader:
+    build:
+      context: .
+      dockerfile: Dockerfile
+
+    volumes:
+      - "/home/meyerjo/dataset/i4c:/data"
+      #
+      - "/tmp/.X11-unix:/tmp/.X11-unix:rw"
+      - "/tmp/.docker.xauth:/tmp/.docker.xauth"
+      # overwrite config
+      - "./config/lidar_camera_calibration/:/catkin_ws/src/lidar_camera_calibration/conf/"
+      - "./launch/:/launch"
+    environment:
+      - "PBSTREAM_FILE=/data/i4c_landwasser_2022-06-08-09-29-26.bag.pbstream"
+      - "ROS_MASTER_URI=http://roscore:11311/"
+      - "DISPLAY"
+    privileged: true
+    restart: "no"
+    depends_on:
+      - roscore
+    ipc: host
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [ gpu ]
+
+  roscore:
+    hostname: roscore
+    image: osrf/ros:noetic-desktop-full
+    command: roscore
