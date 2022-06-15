@@ -38,7 +38,7 @@ ENV QT_X11_NO_MITSHM=1
 ENV XAUTHORITY=/tmp/.docker.xauth
 ENV NO_AT_BRIDGE=1
 
-RUN apt-get update && apt-get install -y git protobuf-compiler curl libgl1-mesa-glx libgomp1 python3.9 python3.9-distutils tzdata
+RUN apt-get update && apt-get install -y curl libgl1-mesa-glx libgomp1 python3.9 python3.9-distutils tzdata
 
 RUN curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
 RUN python3.9 get-pip.py --user
@@ -51,7 +51,4 @@ RUN python -m pip install pbstream-0.0.1-py3-none-any.whl
 
 WORKDIR /code
 COPY main.py /code
-ENV PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION=python
-
-
 CMD python main.py info --inputfile=$PBSTREAM_FILE

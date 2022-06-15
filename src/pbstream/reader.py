@@ -26,15 +26,20 @@ class PBstream_Reader:
     @staticmethod
     def info(file_name: Union[str, Path]) -> None:
         """print info """
+        assert Path(file_name).exists(), f"file_name {file_name} does not exist"
+        print(f'Info about: {file_name}')
         loaded_data = defaultdict(int)
+        i = 0
         with PBstream_Reader(file_name) as pb:
             header = pb.serialization_header
             for msg in pb:
+                if i % 1000 == 0:
+                    print(f'Msg {i}', end='\r')
                 fields = msg.ListFields()
                 if len(fields) == 0: continue
+                i += 1
                 for (field_descriptor, messsage) in fields:
                     loaded_data[field_descriptor.name] += 1
-        print(f'Info about: {file_name}')
         print(f'Serialization Header-Format Version: {header.format_version}')
         max_key_length = max(list(map(len, loaded_data.keys())))
         max_charlength_items = len(str(max([v for _, v in loaded_data.items()])))

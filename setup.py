@@ -17,10 +17,9 @@ setuptools.setup(
         "Operating System :: OS Independent",
     ],
     package_dir={"": "src"},
-    packages=setuptools.find_packages(where="src"),
+    packages=setuptools.find_namespace_packages("src"),
     python_requires=">=3.6",
     install_requires=[
         'setuptools>42',
-        'protobuf>3.9'
     ]
 )
